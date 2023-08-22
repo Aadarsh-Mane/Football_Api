@@ -15,7 +15,7 @@
     ],
     "functions": {
         "myFunction": {
-          "maxDuration": 30 
+          "maxDuration": 60 
         }
       }
 }
