@@ -27,51 +27,25 @@ Table of Contents
 **License**
 Getting Started
 Prerequisites
-To use this API, you will need:
+# To use this API, you will need:
 
 RapidAPI Account: Sign up on RapidAPI to get access to this API.
 API Key
 To make requests to the Football API, include your RapidAPI key in the request headers. You can obtain your RapidAPI key from your RapidAPI Dashboard.
 
-Installation
+# Installation
 The API is hosted on RapidAPI Hub, so there's no need for local installation. You can access it directly through the RapidAPI platform.
 
-Usage
+# Usage
 Endpoints
 The API provides the following endpoints:
 
+/players: This endpoint gives detailed information on the top 10 football players based on various metrics.
+/players/news: Get all the football  related contracts,new sigining,done-deal,injury update etc news.
 /players/fixtures: Get today's football fixtures.
 /players/transfers: Get the latest football updates.
-/transfer-news: Get transfer news.
-/top-players: Get information on the top 10 football players.
-Authentication
-To make requests to the API, include your RapidAPI key in the request headers:
 
-http
-Copy code
-X-RapidAPI-Key: your-rapidapi-key
-Example Requests
-Here are some example requests using cURL:
 
-bash
-Copy code
-# Get fixtures for a specific date
-curl -H "X-RapidAPI-Key: your-rapidapi-key" https://football_api12.p.rapidapi.com/fixtures?date=2023-08-29
-
-# Get the latest updates
-curl -H "X-RapidAPI-Key: your-rapidapi-key" https://football_api12.p.rapidapi.com/updates
-Data Categories
-1. Fixtures
-The /fixtures endpoint provides information on upcoming football fixtures. You can filter fixtures by date and competition.
-
-2. Updates
-The /updates endpoint offers the latest football updates, including scores, goals, and match events.
-
-3. Transfer News
-The /transfer-news endpoint provides transfer news and player transfer information.
-
-4. Top 10 Players
-The /top-players endpoint gives detailed information on the top 10 football players based on various metrics.
 
 Contributing
 Contributions are welcome! If you'd like to contribute to this project, please follow our Contributing Guidelines.
