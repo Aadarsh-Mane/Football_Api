@@ -8,12 +8,10 @@ import {
 } from "../controllers/events.js";
 import cors from "cors";
 
-
 const app = express();
 
-
 const router = express.Router();
-app.use(cors())
+app.use(cors());
 
 // all routes are staring with users
 router.get("/news", getNews);

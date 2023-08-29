@@ -2,11 +2,6 @@ import axios from "axios";
 import cheerio from "cheerio";
 
 const information = [
-  // 'football',
-  // 'team',
-  // 'aim',
-  // 'goals',
-  // 'players',
   `Bellingham's`,
   "Ageless",
   "Vini Jr",
@@ -38,7 +33,7 @@ const footballinformation = [
   },
 ];
 const nameMapping = {
-  Bellingham: "Bellingham", // Replace with appropriate names and keywords
+  Bellingham: "Bellingham",
   Messi: "Messi",
   Ronaldo: "Ronaldo",
   Modric: "Modric",
@@ -50,25 +45,21 @@ const nameMapping = {
   Pele: "Pele",
   Kevin: "Kevin De Bruyne",
   Johan: "Johan Cruffy",
+};
+const wikipidea = [
+  "https://en.wikipedia.org/wiki/Cristiano_Ronaldo",
+  "https://en.wikipedia.org/wiki/Jude_Bellingham",
+  "https://en.wikipedia.org/wiki/Karim_Benzema",
+  "https://en.wikipedia.org/wiki/Harry_Kane",
+  "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
 
-  // Replace with appropriate names and keywords
-  // Add more names and keywords as needed
-}
-;
-const wikipidea=[
-  'https://en.wikipedia.org/wiki/Cristiano_Ronaldo',
-  'https://en.wikipedia.org/wiki/Jude_Bellingham',
-  'https://en.wikipedia.org/wiki/Karim_Benzema',
-  'https://en.wikipedia.org/wiki/Harry_Kane',
-  'https://en.wikipedia.org/wiki/Kevin_De_Bruyne',
-
-  'https://en.wikipedia.org/wiki/Pel%C3%A9',
-  'https://en.wikipedia.org/wiki/Vin%C3%ADcius_J%C3%BAnior',
-  'https://en.wikipedia.org/wiki/Diego_Maradona',
-  'https://en.wikipedia.org/wiki/Luka_Modri%C4%87',
-  'https://en.wikipedia.org/wiki/Robert_Lewandowski',
-  'https://en.wikipedia.org/wiki/Johan_Cruyff',
-]
+  "https://en.wikipedia.org/wiki/Pel%C3%A9",
+  "https://en.wikipedia.org/wiki/Vin%C3%ADcius_J%C3%BAnior",
+  "https://en.wikipedia.org/wiki/Diego_Maradona",
+  "https://en.wikipedia.org/wiki/Luka_Modri%C4%87",
+  "https://en.wikipedia.org/wiki/Robert_Lewandowski",
+  "https://en.wikipedia.org/wiki/Johan_Cruyff",
+];
 const informative = [];
 const addedInformation = [];
 export const fetchInformation = async () => {
@@ -87,16 +78,15 @@ export const fetchInformation = async () => {
               for (const keyword in nameMapping) {
                 if (desc.includes(keyword)) {
                   const matchingName = nameMapping[keyword];
-                 
-                 const wikiLink = wikipidea.find((link) =>
-                 link.includes(matchingName.replace(' ', '_'))
-               );
+
+                  const wikiLink = wikipidea.find((link) =>
+                    link.includes(matchingName.replace(" ", "_"))
+                  );
                   informative.push({
                     player: matchingName,
                     desc,
                     content: source.name,
-                    website:wikiLink
-
+                    website: wikiLink,
                   });
 
                   break; // Exit the loop after the first match
@@ -118,14 +108,14 @@ export const fetchInformation = async () => {
                 if (desc.includes(keyword)) {
                   const matchingName = nameMapping[keyword];
                   const wikiLink = wikipidea.find((link) =>
-                  link.includes(matchingName.replace(' ', '_'))
-                );
+                    link.includes(matchingName.replace(" ", "_"))
+                  );
 
                   informative.push({
                     desc,
                     content: source.name,
                     player: matchingName,
-                    website:wikiLink
+                    website: wikiLink,
                   });
 
                   break; // Exit the loop after the first match

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { transferKeywords } from "../constants/transfer_keywords.js";
 import cheerio from "cheerio";
-import {v4 as uuidv4} from 'uuid'
+import { v4 as uuidv4 } from "uuid";
 const transfer = [];
 // Transfer Keywords
 

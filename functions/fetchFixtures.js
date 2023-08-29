@@ -1,6 +1,6 @@
 import { teamNames } from "../constants/transfer_keywords.js";
 import axios from "axios";
-import {v4 as uuidv4} from 'uuid'
+import { v4 as uuidv4 } from "uuid";
 import cheerio from "cheerio";
 
 const fixturesSource = [
@@ -38,18 +38,15 @@ export const fetchFixtures = async () => {
 
             const url = $(this).attr("href");
             const userId = uuidv4();
-            // const userWithId={...user,id:userId}
-            // let score=$(this).find("span")
-            // Now you can work with each <span>
 
             if (!fixturs.includes(title)) {
               articles1.push({
-                  teamA: arr[0],
-                  TeamB: arrc[2],
-                  time: timeArray,
-                  url: source.base + url,
-                  source: source.name,
-                  id: userId,
+                teamA: arr[0],
+                teamB: arrc[2],
+                time: timeArray,
+                url: source.base + url,
+                source: source.name,
+                id: userId,
               });
               fixturs.push(title);
             }

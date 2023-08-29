@@ -1,12 +1,9 @@
-import axios from "axios";
-
-import cheerio from "cheerio";
 import { fetchNews } from "../functions/fetchNews.js";
 import { fetchTransfers } from "../functions/fetchTransfers.js";
 import { fetchFixtures } from "../functions/fetchFixtures.js";
 import { fetchResults } from "../functions/fetchResults.js";
 import { fetchInformation } from "../functions/informative.js";
-``
+``;
 export const getNews = async (req, res) => {
   try {
     const articles = await fetchNews();
