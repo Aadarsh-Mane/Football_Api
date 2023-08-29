@@ -11,20 +11,20 @@ Overview
 Important Note: This API is hosted on RapidAPI Hub for easy access and integration into your applications.
 
 Table of Contents
-Getting Started
-Prerequisites
-API Key
-Usage
-Endpoints
-Authentication
-Example Requests
-Data Categories
-1. Fixtures
-2. Updates
-3. Transfer News
-4. Top 10 Players
-Contributing
-License
+**Getting Started**
+**Prerequisites**
+**API Key**
+**Usage**
+**Endpoints**
+**Authentication**
+**Example Requests**
+**Data Categories**
+**1. Fixtures**
+**2. Updates**
+**3. Transfer News**
+**4. Top 10 Players**
+**Contributing**
+**License**
 Getting Started
 Prerequisites
 To use this API, you will need:
@@ -40,8 +40,8 @@ Usage
 Endpoints
 The API provides the following endpoints:
 
-/fixtures: Get football fixtures.
-/updates: Get the latest football updates.
+/players/fixtures: Get today's football fixtures.
+/players/transfers: Get the latest football updates.
 /transfer-news: Get transfer news.
 /top-players: Get information on the top 10 football players.
 Authentication
