@@ -1,8 +1,8 @@
 # Football_Api
 
-The Football![football pla](https://github.com/Aadarsh-Mane/Football_Api/assets/95363427/22a7b91d-7305-4d60-ac3d-2b8943e43356)
+![football pla](https://github.com/Aadarsh-Mane/Football_Api/assets/95363427/22a7b91d-7305-4d60-ac3d-2b8943e43356)
 Overview
- API provides access to a wealth of football-related data, including fixtures, updates, transfer news, and information on the top 10 players. This API is designed to assist developers, football enthusiasts, and researchers in accessing up-to-date and reliable football data for various use cases.
+ API provides access to a wealth of football-related data, including #fixtures, updates, transfer news, and information on the top 10 players. This API is designed to assist developers, football enthusiasts, and researchers in accessing up-to-date and reliable football data for various use cases.
 
 Important Note: This API is hosted on RapidAPI Hub for easy access and integration into your applications.
 
