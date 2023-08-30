@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  getFabrizo,
   getFixtures,
   getInformation,
   getNews,
@@ -18,6 +19,7 @@ router.get("/news", getNews);
 router.get("/transfers", getTransfers);
 router.get("/fixtures", getFixtures);
 router.get("/results", getResults);
+router.get("/fabi", getFabrizo);
 router.get("/", getInformation);
 
 export default router;

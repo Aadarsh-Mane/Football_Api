@@ -3,6 +3,7 @@ import { fetchTransfers } from "../functions/fetchTransfers.js";
 import { fetchFixtures } from "../functions/fetchFixtures.js";
 import { fetchResults } from "../functions/fetchResults.js";
 import { fetchInformation } from "../functions/informative.js";
+import { fetchFabrizo } from "../functions/fetchFabrizioRomaneoInfo.js";
 ``;
 export const getNews = async (req, res) => {
   try {
@@ -48,5 +49,15 @@ export const getInformation = async (req, res) => {
   } catch (error) {
     console.error("Error:", error);
     res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+export const getFabrizo = async (req, res) => {
+  try {
+    const fab = await fetchFabrizo();
+    res.json(fab);
+  } catch (error) {
+    console.error("Error:", error);
+    res.json(500).json({ error: "Internal server error" });
   }
 };
