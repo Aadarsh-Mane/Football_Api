@@ -19,7 +19,7 @@ router.get("/news", getNews);
 router.get("/transfers", getTransfers);
 router.get("/fixtures", getFixtures);
 router.get("/results", getResults);
-router.get("/fabi", getFabrizo);
+router.get("/fabrizoinfo", getFabrizo);
 router.get("/", getInformation);
 
 export default router;

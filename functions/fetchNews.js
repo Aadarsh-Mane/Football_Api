@@ -1,6 +1,8 @@
 import axios from "axios";
 import cheerio from "cheerio";
 import { allKeywords } from "../constants/news_keywords.js";
+import { v4 as uuidv4 } from "uuid";
+
 
 const footballNews = [
   {
@@ -29,11 +31,13 @@ export const fetchNews = async () => {
           $(`a.news-list__headline-link:contains("${term}")`).each(function () {
             const headLine = $(this).text().trim();
             const url = $(this).attr("href");
+            const userId = uuidv4();
             if (!addedHeadlines.includes(headLine)) {
               articles.push({
                 headLine,
                 url: source.base + url,
                 source: source.name,
+                id:userId
               });
               addedHeadlines.push(headLine);
             }
@@ -42,11 +46,13 @@ export const fetchNews = async () => {
           $(`a:contains("${term}")`).each(function () {
             const headLine = $(this).text().trim();
             const url = $(this).attr("href");
+            const userId = uuidv4();
             if (!addedHeadlines.includes(headLine)) {
               articles.push({
                 headLine,
                 url: source.base + url,
                 source: source.name,
+                id:userId
               });
               addedHeadlines.push(headLine);
             }
