@@ -1,4 +1,7 @@
-import axios from "axios";
+import axios from "axios";import dotenv from 'dotenv';
+
+dotenv.config();
+
 
 export const fetchFabrizo = async () => {
   const options = {
@@ -11,7 +14,7 @@ export const fetchFabrizo = async () => {
       include_pinned: "false",
     },
     headers: {
-      "X-RapidAPI-Key": "82387cf1damsh116d052c22df5efp141526jsn6bf172d5abe0",
+      "X-RapidAPI-Key": process.env.RAPID_API_KEY,
       "X-RapidAPI-Host": "twitter154.p.rapidapi.com",
     },
   };
