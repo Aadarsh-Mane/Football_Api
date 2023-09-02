@@ -4,6 +4,7 @@ import {
   getFixtures,
   getInformation,
   getNews,
+  getPremuireLeaguePrediction,
   getResults,
   getTransfers,
 } from "../controllers/events.js";
@@ -21,5 +22,6 @@ router.get("/fixtures", getFixtures);
 router.get("/results", getResults);
 router.get("/fabrizoinfo", getFabrizo);
 router.get("/", getInformation);
+
 
 export default router;

@@ -4,6 +4,14 @@ import { fetchFixtures } from "../functions/fetchFixtures.js";
 import { fetchResults } from "../functions/fetchResults.js";
 import { fetchInformation } from "../functions/informative.js";
 import { fetchFabrizo } from "../functions/fetchFabrizioRomaneoInfo.js";
+import { fetchPremiureLeaguePredictions } from "../functions/betting/fetchPremiureLeaguePrediction.js";
+import { fetchChampionsLeaguePredictions } from "../functions/betting/fetchChampionLeaguePrediction.js";
+import { fetchConferenceLeaguePredictions } from "../functions/betting/fetchConferenceLeaguePrediction.js";
+import { fetchEurpoaLeaguePredictions } from "../functions/betting/fetchEuropaLeaguePrediction.js";
+import { fetchSeriesAPredictions } from "../functions/betting/fetchSeriesAPrediction.js";
+import { fetchLigue1Predictions } from "../functions/betting/fetchLigue1Prediction.js";
+import { fetchLaLigaPredictions } from "../functions/betting/fetchLaLigaPrediction.js";
+import { fetchBundesligaPredictions } from "../functions/betting/fetchBundesligaPrediction.js";
 ``;
 export const getNews = async (req, res) => {
   try {
@@ -56,6 +64,78 @@ export const getFabrizo = async (req, res) => {
   try {
     const fab = await fetchFabrizo();
     res.json(fab);
+  } catch (error) {
+    console.error("Error:", error);
+    res.json(500).json({ error: "Internal server error" });
+  }
+};
+export const getPremuireLeaguePrediction = async (req, res) => {
+  try {
+    const pre = await fetchPremiureLeaguePredictions();
+    res.json(pre);
+  } catch (error) {
+    console.error("Error:", error);
+    res.json(500).json({ error: "Internal server error" });
+  }
+};
+export const getChampionsLeaguePrediction = async (req, res) => {
+  try {
+    const pre = await fetchChampionsLeaguePredictions();
+    res.json(pre);
+  } catch (error) {
+    console.error("Error:", error);
+    res.json(500).json({ error: "Internal server error" });
+  }
+};
+export const getConferenceLeaguePrediction = async (req, res) => {
+  try {
+    const pre = await fetchConferenceLeaguePredictions();
+    res.json(pre);
+  } catch (error) {
+    console.error("Error:", error);
+    res.json(500).json({ error: "Internal server error" });
+  }
+};
+export const getEuropaLeaguePrediction = async (req, res) => {
+  try {
+    const pre = await fetchEurpoaLeaguePredictions();
+    res.json(pre);
+  } catch (error) {
+    console.error("Error:", error);
+    res.json(500).json({ error: "Internal server error" });
+  }
+};
+export const getSeriesAPrediction = async (req, res) => {
+  try {
+    const pre = await fetchSeriesAPredictions();
+    res.json(pre);
+  } catch (error) {
+    console.error("Error:", error);
+    res.json(500).json({ error: "Internal server error" });
+  }
+};
+export const getLigue1Prediction = async (req, res) => {
+  try {
+    const pre = await fetchLigue1Predictions();
+    res.json(pre);
+  } catch (error) {
+    console.error("Error:", error);
+    res.json(500).json({ error: "Internal server error" });
+  }
+};
+export const getLaLigaPrediction = async (req, res) => {
+  try {
+    const pre = await fetchLaLigaPredictions();
+    res.json(pre);
+  } catch (error) {
+    console.error("Error:", error);
+    res.json(500).json({ error: "Internal server error" });
+  }
+};
+export const getBundesligaPrediction = async (req, res) => {
+  try {
+    const pre = await fetchBundesligaPredictions();
+    res.json(pre);
   } catch (error) {
     console.error("Error:", error);
     res.json(500).json({ error: "Internal server error" });
