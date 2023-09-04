@@ -47,10 +47,7 @@ The API provides the following endpoints:
 
 
 
-Contributing
-Contributions are welcome! If you'd like to contribute to this project, please follow our Contributing Guidelines.
+# Contributing
+Contributions are welcome! If you'd like to contribute to this project.
 
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
 
-This revised README reflects that your API is hosted on RapidAPI Hub and provides clear instructions on how users can access and authenticate with the API using their RapidAPI key. Please replace "your-rapidapi-key" with actual keys and URLs as needed.
