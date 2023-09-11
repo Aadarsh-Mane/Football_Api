@@ -7,8 +7,8 @@ const newspapers = [
     source: "",
   },
 ];
-const addedHeadlines1 = [];
-const articles = [];
+const addedSeriesAPrediction = [];
+const seriesAPrediction = [];
 export const fetchSeriesAPredictions = async () => {
   for (const source of newspapers) {
     const response = await axios.get(source.address);
@@ -18,7 +18,7 @@ export const fetchSeriesAPredictions = async () => {
     // Select h3 elements containing "Prediction"
     const h3Elements = $('h3:contains("Prediction")');
 
-    // Combine h3 and the immediately following two p elements into articles
+    // Combine h3 and the immediately following two p elements into seriesAPrediction
     h3Elements.each((index, element) => {
       const match = $(element).text();
       const pElements = $(element)
@@ -27,7 +27,7 @@ export const fetchSeriesAPredictions = async () => {
         .map((i, pElement) => $(pElement).text())
         .get();
 
-      if (!addedHeadlines1.includes(match)) {
+      if (!addedSeriesAPrediction.includes(match)) {
         const article = {
           match,
           source: newspapers.name,
@@ -42,10 +42,10 @@ export const fetchSeriesAPredictions = async () => {
           article.Prediction[pKeys[i]] = pElements[i];
         }
 
-        articles.push(article);
-        addedHeadlines1.push(match);
+        seriesAPrediction.push(article);
+        addedSeriesAPrediction.push(match);
       }
     });
   }
-  return articles;
+  return seriesAPrediction;
 };
