@@ -23,6 +23,7 @@ export const fetchNews = async () => {
   for (const source of footballNews) {
     try {
       const response = await axios.get(source.address);
+    
       const html = response.data;
       const $ = cheerio.load(html);
 
