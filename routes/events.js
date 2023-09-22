@@ -3,6 +3,7 @@ import {
   getFabrizo,
   getFixtures,
   getInformation,
+  getMadridInsights,
   getNews,
   getPremuireLeaguePrediction,
   getResults,
@@ -22,6 +23,7 @@ router.get("/fixtures", getFixtures);
 router.get("/results", getResults);
 router.get("/fabrizoinfo", getFabrizo);
 router.get("/", getInformation);
+router.get("/realmadrid", getMadridInsights);
 
 
 export default router;

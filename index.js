@@ -1,4 +1,6 @@
 const PORT = process.env.PORT || 5000;
+import axios from "axios";
+import cheerio from "cheerio";
 
 import express from "express";
 import eventRoutes from "./routes/events.js";
