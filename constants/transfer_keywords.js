@@ -54,6 +54,8 @@ const generalTransferKeywords = [
     "Alavés",
     "Athletic Bilbao",
     "Atlético Madrid",
+    "Crawley",
+    "Leverkusen",
     "Barcelona",
     "Cádiz",
     "Celta Vigo",
@@ -113,6 +115,7 @@ const generalTransferKeywords = [
     "Watford",
     "West Ham United",
     "Wolverhampton Wanderers",
+    "Chelsea Women"
   ];
   
   // Manager Names
