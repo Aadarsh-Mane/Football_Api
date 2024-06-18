@@ -332,7 +332,34 @@ const generalTransferKeywords = [
     "David Moyes", // West Ham United
     "Bruno Lage", // Wolverhampton Wanderers
   ];
-  
+  export const fixedTransferWords=[
+    'transfer',
+    'plans',
+    'target',
+    'offer',
+    'news',
+    'receive',
+    'price',
+    'seals',
+    'deal',
+    'swap',
+    'move',
+    'sell',
+    'bid',
+    'interest',
+    "speculation",
+    "negotiation",
+    "injury",
+    "medical examination",
+    "fitness test",
+    "recovery",
+    "medical assessment",
+    "fee",
+    "valuation",
+    "loan",
+    "clause",
+    "wages"
+  ]
   // Combine all arrays
   export const transferKeywords = [
     ...generalTransferKeywords,

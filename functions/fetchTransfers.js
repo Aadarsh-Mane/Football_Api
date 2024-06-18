@@ -1,5 +1,5 @@
 import axios from "axios";
-import { transferKeywords } from "../constants/transfer_keywords.js";
+import { fixedTransferWords, transferKeywords } from "../constants/transfer_keywords.js";
 import cheerio from "cheerio";
 import { v4 as uuidv4 } from "uuid";
 const transfer = [];
@@ -24,7 +24,7 @@ export const fetchTransfers = async () => {
       const response = await axios.get(source.address);
       const html = response.data;
       const $ = cheerio.load(html);
-      transferKeywords.forEach((term1) => {
+      fixedTransferWords.forEach((term1) => {
         if (source.name === "mirror") {
           $(`article:contains("${term1}")`, html).each(function () {
             const title = $(this).text();
