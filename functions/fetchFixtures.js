@@ -30,6 +30,8 @@ export const fetchFixtures = async () => {
         teamNames.forEach((term1) => {
           $(`a.matches__item.matches__link:contains("${term1}")`, this).each(function () {
             let title = $(this).text().trim();
+            const matchTime = $(this).find("span.matches__date").text().trim();
+
             // Clean and format the title text
             title = title.replace(/\n/g, "").replace(/\s+/g, " ").replace(/0 0/, "").replace(/0 0/, "");
             
@@ -38,12 +40,24 @@ export const fetchFixtures = async () => {
             const arrc = title.split(/:(.{2})\s(.+)/);
             const url = $(this).attr("href");
             const userId = uuidv4();
-            
+            let matchOver=false;
+            let matchStatus='';
+            if(title.includes("FT")){
+               matchOver=true;
+               matchStatus='Match is already finished'
+            }else{
+              matchOver=false;
+              matchStatus='Match not started'
+            }
+
             if (!fixturs.includes(title)) {
               articles1.push({
                 teamA: arr[0],
                 teamB: arrc[2],
-                time: timeTag, // Add the extracted time here
+                time: timeTag, 
+                matchOver: matchOver,  // Indicate if the match is over
+               matchStatus: matchStatus,
+                // Add the extracted time here
                 url: source.base + url,
                 source: source.name,
                 id: userId,
