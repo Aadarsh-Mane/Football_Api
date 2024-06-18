@@ -4,6 +4,7 @@ import {
   getFabrizo,
   getFixtures,
   getInformation,
+  getLiveScore,
   getMadridInsights,
   getNews,
   getPremuireLeaguePrediction,
@@ -21,6 +22,7 @@ app.use(cors());
 router.get("/news", getNews);
 router.get("/transfers", getTransfers);
 router.get("/fixtures", getFixtures);
+router.get("/livescore", getLiveScore);
 router.get("/results", getResults);
 router.get("/fabrizoinfo", getFabrizo);
 router.get("/", getInformation);

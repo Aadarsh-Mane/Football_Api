@@ -14,6 +14,7 @@ import { fetchLaLigaPredictions } from "../functions/betting/fetchLaLigaPredicti
 import { fetchBundesligaPredictions } from "../functions/betting/fetchBundesligaPrediction.js";
 import { fetchMadrid } from "../functions/specificTeams/realMadrid.js";
 import { fetchBarca } from "../functions/specificTeams/barcelona.js";
+import { fetchLiveScore } from "../functions/fetchLiveScores.js";
 ``;
 export const getNews = async (req, res) => {
   try {
@@ -156,6 +157,15 @@ export const getBarcaInsights = async (req, res) => {
   try {
     const barca = await fetchBarca();
     res.json(barca);
+  } catch (error) {
+    console.error("Error:", error);
+    res.json(500).json({ error: "Internal server error" });
+  }
+};
+export const getLiveScore = async (req, res) => {
+  try {
+    const livescore = await fetchLiveScore();
+    res.json(livescore);
   } catch (error) {
     console.error("Error:", error);
     res.json(500).json({ error: "Internal server error" });
