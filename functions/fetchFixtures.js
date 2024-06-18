@@ -58,8 +58,8 @@ export const fetchFixtures = async () => {
                 matchOver: matchOver,  // Indicate if the match is over
                matchStatus: matchStatus,
                 // Add the extracted time here
-                url: source.base + url,
-                source: source.name,
+                // url: source.base + url,
+                // source: source.name,
                 id: userId,
               });
               fixturs.push(title);

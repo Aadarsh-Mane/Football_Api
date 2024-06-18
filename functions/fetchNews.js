@@ -51,8 +51,8 @@ export const fetchNews = async () => {
             if (!addedHeadlines.includes(headLine)) {
               articles.push({
                 headLine,
-                url: source.base + url,
-                source: source.name,
+                // url: source.base + url,
+                // source: source.name,
                 id:userId
               });
               addedHeadlines.push(headLine);

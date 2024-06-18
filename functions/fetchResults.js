@@ -42,7 +42,7 @@ export const fetchResults = async () => {
                 team2: parts[4],
                 // spanText,
                 // url: source.base + url,
-                source: source.name,
+                // source: source.name,
                 id: userId,
               });
               addedResults.push(title);
