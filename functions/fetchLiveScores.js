@@ -47,8 +47,8 @@ export const fetchLiveScore = async () => {
                 teamB: arrc[2]?.trim(),
                 scoreA: teamScoreA,  // Add the extracted score for team A
                 scoreB: teamScoreB,  // Add the extracted score for team B
-                url: source.base + url,
-                source: source.name,
+                // url: source.base + url,
+                // source: source.name,
                 id: userId,
               });
               fixturs.push(title);
