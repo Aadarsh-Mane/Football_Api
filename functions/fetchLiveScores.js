@@ -26,6 +26,7 @@ export const fetchLiveScore = async () => {
         // Extract the scores from the span tags with class matches__teamscores-side
         const teamScoreA = $(this).find("span.matches__teamscores-side").first().text().trim();
         const teamScoreB = $(this).find("span.matches__teamscores-side").last().text().trim();
+        const timing = $(this).find("span.matches__date").last().text().trim();
         
         // Use teamNames to find matching fixtures
         teamNames.forEach((term1) => {
@@ -49,6 +50,7 @@ export const fetchLiveScore = async () => {
                 scoreB: teamScoreB,  // Add the extracted score for team B
                 // url: source.base + url,
                 // source: source.name,
+                timing:timing + ' GMT',
                 id: userId,
               });
               fixturs.push(title);

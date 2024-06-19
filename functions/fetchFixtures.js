@@ -11,10 +11,11 @@ const fixturesSource = [
   },
 ];
 
-const articles1 = [];
-const fixturs = [];
-
 export const fetchFixtures = async () => {
+  // Initialize a new list for articles to ensure fresh data on each call
+  const articles1 = [];
+  const fixturs = new Set(); // Use a Set to avoid duplicates efficiently
+
   for (const source of fixturesSource) {
     try {
       const response = await axios.get(source.address);
@@ -23,46 +24,73 @@ export const fetchFixtures = async () => {
 
       // Parse the match information inside the specified div
       $("div.fixres.matches-block--large").each(function () {
-        // For each match block, find the h4 or h5 tags containing time information
-        const timeTag = $(this).find("h4").text().trim();
-        
-        // Use teamNames to find matching fixtures
-        teamNames.forEach((term1) => {
-          $(`a.matches__item.matches__link:contains("${term1}")`, this).each(function () {
-            let title = $(this).text().trim();
-            const matchTime = $(this).find("span.matches__date").text().trim();
+        const month = $(this).find("h3").text().trim();
+        const day = $(this).find("h4").text().trim();
+        // Iterate over each match link within the block
+        $(this).find("a.matches__item.matches__link").each(function () {
+          let title = $(this).text().trim();
+          const matchTime = $(this).find("span.matches__date").text().trim();
 
-            // Clean and format the title text
-            title = title.replace(/\n/g, "").replace(/\s+/g, " ").replace(/0 0/, "").replace(/0 0/, "");
-            
-            // Extract team names and match URL
-            const arr = title.split(/\d+/);
-            const arrc = title.split(/:(.{2})\s(.+)/);
-            const url = $(this).attr("href");
-            const userId = uuidv4();
-            let matchOver=false;
-            let matchStatus='';
-            if(title.includes("FT")){
-               matchOver=true;
-               matchStatus='Match is already finished'
-            }else{
-              matchOver=false;
-              matchStatus='Match not started'
-            }
+          // Extract the scores from the span tags with class matches__teamscores-side
+          const teamScoreA = $(this).find("span.matches__teamscores-side").first().text().trim() || "0";
+          const teamScoreB = $(this).find("span.matches__teamscores-side").last().text().trim() || "0";
 
-            if (!fixturs.includes(title)) {
-              articles1.push({
-                teamA: arr[0],
-                teamB: arrc[2],
-                time: timeTag, 
-                matchOver: matchOver,  // Indicate if the match is over
-               matchStatus: matchStatus,
-                // Add the extracted time here
-                // url: source.base + url,
-                // source: source.name,
-                id: userId,
-              });
-              fixturs.push(title);
+          // Extract the match status from the span with class matches__item-col matches__info
+          const matchInfo = $(this).find("span.matches__item-col.matches__info").text().trim();
+
+          // Determine if the match is finished based on "FT" in matchInfo
+          let matchOver = false;
+          let matchStatus = 'Match not started';
+          if (matchInfo.includes("FT")) {
+            matchOver = true;
+            matchStatus = 'Match is already finished';
+          }
+
+          // Use teamNames to find matching fixtures
+          teamNames.forEach((term1) => {
+            if (title.includes(term1)) {
+              // Clean and format the title text
+              title = title.replace(/\n/g, "").replace(/\s+/g, " ").replace(/0 0/, "").replace(/0 0/, "");
+
+              // Extract team names
+              const arr = title.split(/\d+/);
+              const arrc = title.split(/:(.{2})\s(.+)/);
+              const teamA = arr[0].trim();
+              const teamB = arrc[2]?.trim();
+              const url = $(this).attr("href");
+              const userId = uuidv4();
+
+              const fixtureKey = `${teamA}-${teamB}`;
+
+              // Check if the match is already tracked
+              const existingMatchIndex = articles1.findIndex(
+                match => match.teamA === teamA && match.teamB === teamB
+              );
+
+              if (existingMatchIndex > -1) {
+                // Update the score and status for the existing match
+                articles1[existingMatchIndex].scoreA = teamScoreA;
+                articles1[existingMatchIndex].scoreB = teamScoreB;
+                articles1[existingMatchIndex].matchOver = matchOver;
+                // articles1[existingMatchIndex].matchStatus = matchStatus;
+              } else {
+                // Add a new match entry
+                articles1.push({
+                  teamA: teamA,
+                  teamB: teamB,
+                  scoreA: teamScoreA,
+                  scoreB: teamScoreB,
+                  time: matchTime,
+                  matchOver: matchOver,
+                  month:month,
+                  day: day,
+                  // matchStatus: matchStatus,
+                  // url: source.base + url,
+                  // source: source.name,
+                  id: userId,
+                });
+                fixturs.add(fixtureKey); // Track the fixture to avoid duplicates
+              }
             }
           });
         });
@@ -73,3 +101,6 @@ export const fetchFixtures = async () => {
   }
   return articles1;
 };
+
+// Test fetchFixtures function
+fetchFixtures().then((articles) => console.log(articles));
