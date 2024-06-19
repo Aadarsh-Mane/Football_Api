@@ -103,4 +103,3 @@ export const fetchFixtures = async () => {
 };
 
 // Test fetchFixtures function
-fetchFixtures().then((articles) => console.log(articles));
