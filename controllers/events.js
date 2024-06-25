@@ -16,7 +16,7 @@ import { fetchMadrid } from "../functions/specificTeams/realMadrid.js";
 import { fetchBarca } from "../functions/specificTeams/barcelona.js";
 import { fetchLiveScore } from "../functions/fetchLiveScores.js";
 import { scrapeTableData } from "../functions/fetchPlayerMarket.js";
-``;
+
 export const getNews = async (req, res) => {
   try {
     const articles = await fetchNews();
