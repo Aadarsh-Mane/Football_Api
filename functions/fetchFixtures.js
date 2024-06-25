@@ -11,6 +11,9 @@ const fixturesSource = [
   },
 ];
 
+// In-memory storage for fixture IDs
+const fixtureIdMap = new Map();
+
 export const fetchFixtures = async () => {
   // Initialize a new list for articles to ensure fresh data on each call
   const articles1 = [];
@@ -58,13 +61,21 @@ export const fetchFixtures = async () => {
               const teamA = arr[0].trim();
               const teamB = arrc[2]?.trim();
               const url = $(this).attr("href");
-              const userId = uuidv4();
 
-              const fixtureKey = `${teamA}-${teamB}`;
+              // Create a unique fixture key using team names, date, and time
+              const fixtureKey = `${teamA}-${teamB}-${month}-${day}-${matchTime}`;
+
+              // Check if the fixture already has an ID
+              let fixtureId = fixtureIdMap.get(fixtureKey);
+              if (!fixtureId) {
+                // Generate a new UUID if it doesn't exist
+                fixtureId = uuidv4();
+                fixtureIdMap.set(fixtureKey, fixtureId);
+              }
 
               // Check if the match is already tracked
               const existingMatchIndex = articles1.findIndex(
-                match => match.teamA === teamA && match.teamB === teamB
+                match => match.teamA === teamA && match.teamB === teamB && match.time === matchTime
               );
 
               if (existingMatchIndex > -1) {
@@ -72,7 +83,6 @@ export const fetchFixtures = async () => {
                 articles1[existingMatchIndex].scoreA = teamScoreA;
                 articles1[existingMatchIndex].scoreB = teamScoreB;
                 articles1[existingMatchIndex].matchOver = matchOver;
-                // articles1[existingMatchIndex].matchStatus = matchStatus;
               } else {
                 // Add a new match entry
                 articles1.push({
@@ -82,12 +92,9 @@ export const fetchFixtures = async () => {
                   scoreB: teamScoreB,
                   time: matchTime,
                   matchOver: matchOver,
-                  month:month,
+                  month: month,
                   day: day,
-                  // matchStatus: matchStatus,
-                  // url: source.base + url,
-                  // source: source.name,
-                  id: userId,
+                  id: fixtureId,
                 });
                 fixturs.add(fixtureKey); // Track the fixture to avoid duplicates
               }

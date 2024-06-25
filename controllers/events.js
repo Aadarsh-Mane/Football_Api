@@ -15,6 +15,7 @@ import { fetchBundesligaPredictions } from "../functions/betting/fetchBundesliga
 import { fetchMadrid } from "../functions/specificTeams/realMadrid.js";
 import { fetchBarca } from "../functions/specificTeams/barcelona.js";
 import { fetchLiveScore } from "../functions/fetchLiveScores.js";
+import { scrapeTableData } from "../functions/fetchPlayerMarket.js";
 ``;
 export const getNews = async (req, res) => {
   try {
@@ -165,6 +166,15 @@ export const getBarcaInsights = async (req, res) => {
 export const getLiveScore = async (req, res) => {
   try {
     const livescore = await fetchLiveScore();
+    res.json(livescore);
+  } catch (error) {
+    console.error("Error:", error);
+    res.json(500).json({ error: "Internal server error" });
+  }
+};
+export const getPLayerRank = async (req, res) => {
+  try {
+    const livescore = await scrapeTableData();
     res.json(livescore);
   } catch (error) {
     console.error("Error:", error);
