@@ -57,8 +57,8 @@ export const scrapeTableData = async () => {
   return articles;
 };
 
-scrapeTableData().then((data) => {
-  console.log(data);
-}).catch((error) => {
-  console.error("Error scraping table data:", error);
-});
+// scrapeTableData().then((data) => {
+//   console.log(data);
+// }).catch((error) => {
+//   console.error("Error scraping table data:", error);
+// });
