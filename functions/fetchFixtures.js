@@ -49,6 +49,14 @@ export const fetchFixtures = async () => {
             matchStatus = 'Match is already finished';
           }
 
+          // Determine if the match includes "FT" in the title
+          let matchWork = false;
+          if (title.includes("FT")) {
+            matchWork = true;
+            // Adjust title to remove "FT" from teamB
+            title = title.replace("FT", "").trim();
+          }
+
           // Use teamNames to find matching fixtures
           teamNames.forEach((term1) => {
             if (title.includes(term1)) {
@@ -79,10 +87,11 @@ export const fetchFixtures = async () => {
               );
 
               if (existingMatchIndex > -1) {
-                // Update the score and status for the existing match
+                // Update the score, status, and work for the existing match
                 articles1[existingMatchIndex].scoreA = teamScoreA;
                 articles1[existingMatchIndex].scoreB = teamScoreB;
                 articles1[existingMatchIndex].matchOver = matchOver;
+                // articles1[existingMatchIndex].matchWork = matchWork;
               } else {
                 // Add a new match entry
                 articles1.push({
