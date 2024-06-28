@@ -96,6 +96,8 @@ const generalTransferKeywords = [
  export  const teamNames = [
 
   //international team names
+  "Derry City",
+  "VPS",
   "Argentina",
   "Bolivia",
   "Brazil",

@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  getAllMatches,
   getBarcaInsights,
   getFabrizo,
   getFixtures,
@@ -23,6 +24,7 @@ router.get("/news", getNews);
 router.get("/transfers", getTransfers);
 router.get("/fixtures", getFixtures);
 router.get("/livescore", getLiveScore);
+router.get("/allMatch", getAllMatches);
 router.get("/results", getResults);
 router.get("/fabrizoinfo", getFabrizo);
 router.get("/", getInformation);
