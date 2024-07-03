@@ -115,7 +115,6 @@ export const fetchFixtures = async () => {
       console.error(`Error fetching from ${source.name}:`, error);
     }
   }
-  
   return articles1;
 };
 

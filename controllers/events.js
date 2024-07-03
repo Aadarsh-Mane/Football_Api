@@ -40,7 +40,10 @@ export const getTransfers = async (req, res) => {
 export const getFixtures = async (req, res) => {
   try {
     const fixtures = await fetchFixtures();
-    res.json(fixtures);
+    if(fixtures.length==0){
+     return res.json({message:'Todays fixtures are not available'});
+    }
+    res.json(fixtures); //This violates HTTP protocol because only one response should be sent per request.
   } catch (error) {
     console.error("Error:", error);
     res.status(500).json({ error: "Internal server error" });
