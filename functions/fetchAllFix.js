@@ -11,31 +11,41 @@ export const scrapeFootballMatches = async () => {
 
     const matches = [];
 
-    // Select the div containing football matches and iterate over each table
-    $("div.football-matches__container").find("table").each(function () {
-      const matchTable = $(this);
+    // Iterate over each day container
+    $("div.football-matches__day").each(function () {
+      const dayContainer = $(this);
+      const matchDate = dayContainer.find("div.date-divider").text().trim();
 
-      // Iterate over rows in the table skipping header row if needed
-      matchTable.find("tbody tr").each(function () {
-        const matchRow = $(this);
-        const columns = matchRow.find("td");
+      // Iterate over each match table within the day container
+      dayContainer.find("table").each(function () {
+        const matchTable = $(this);
 
-        // Extract data from columns as needed (example assumes specific structure)
-        const teamA = columns.eq(0).text().trim();
-        const teamB = columns.eq(1).text().trim();
-        const scoreA = columns.eq(2).text().trim();
-        const scoreB = columns.eq(3).text().trim();
-        const matchTime = columns.eq(4).text().trim();
-        const matchStatus = columns.eq(5).text().trim(); // Example: FT, HT, etc.
+        // Iterate over rows in the table
+        matchTable.find("tbody tr").each(function () {
+          const matchRow = $(this);
+          const columns = matchRow.find("td");
 
-        // Create an object for each match and push it to the matches array
-        matches.push({
-          teamA: teamA,
-          teamB: teamB,
-          scoreA: scoreA,
-          scoreB: scoreB,
-          time: matchTime,
-          status: matchStatus,
+          // Extract data from columns (adjust based on actual table structure)
+          const matchStatus = columns.eq(0).text().trim(); // Match status or time
+          const matchDetails = columns.eq(1).text().trim(); // Match details
+          const matchDetails1 = columns.eq(2).text().trim(); // Match details
+
+          // Split matchDetails1 by '\n' and clean up extra spaces
+          const teams = matchDetails1.split('\n').map(team => team.trim()).filter(Boolean);
+          const teamA = teams[0];
+          const teamB = teams[1];
+
+          // Extract additional information from the match row, such as team crests or URLs
+          const matchLink = matchRow.attr("data-link-to"); // Example of getting a URL link
+
+          // Create an object for each match and push it to the matches array
+          matches.push({
+            teamA,
+            teamB,
+            date: matchDate,
+            time: matchStatus,
+            
+          });
         });
       });
     });
@@ -48,3 +58,4 @@ export const scrapeFootballMatches = async () => {
 };
 
 // Test scrapeFootballMatches function
+// scrapeFootballMatches().then(matches => console.log(matches));
